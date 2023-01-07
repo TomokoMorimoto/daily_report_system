@@ -77,4 +77,5 @@ public void entryNew() throws ServletException, IOException {
     forward(ForwardConst.FW_SHI_NEW1);
 
 }
+
 }

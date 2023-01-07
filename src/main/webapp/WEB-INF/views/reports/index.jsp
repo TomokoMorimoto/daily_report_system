@@ -51,8 +51,5 @@
             </c:forEach>
         </div>
         <p><a href="<c:url value='?action=${actRep}&command=${commNew}' />">新規日報の登録</a></p>
-
-        <p><a href="<c:url value='?action=${actShi}&command=${commNew}' />">出退勤の登録</a></p>
-
     </c:param>
 </c:import>
