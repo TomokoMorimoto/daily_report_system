@@ -166,3 +166,27 @@ pre {
 h3 {
     font-size: larger;
 }
+
+
+
+
+table#shift_list th {
+    font-weight: bold;
+    padding: 10px 2%;
+}
+
+table#shift_list .shift_name {
+    width: 20%;
+    padding: 10px 2%;
+}
+table#shift_list .shift_date {
+    width: 20%;
+}
+
+table#shift_list .shift_title {
+    width: 37%;
+}
+
+table#shift_list .shift_action {
+    width: 13%;
+}

@@ -54,28 +54,49 @@ public abstract class ActionBase {
      */
     protected void invoke()
             throws ServletException, IOException {
-
         Method commandMethod;
         try {
-
             //パラメータからcommandを取得
             String command = request.getParameter(ForwardConst.CMD.getValue());
-
             //ommandに該当するメソッドを実行する
             //(例: action=Employee command=show の場合 EmployeeActionクラスのshow()メソッドを実行する)
+
+System.out.println("command →" + command );  // 追記
+
             commandMethod = this.getClass().getDeclaredMethod(command, new Class[0]);
             commandMethod.invoke(this, new Object[0]); //メソッドに渡す引数はなし
-
         } catch (NoSuchMethodException | SecurityException | IllegalAccessException | IllegalArgumentException
                 | InvocationTargetException | NullPointerException e) {
-
             //発生した例外をコンソールに表示
             e.printStackTrace();
             //commandの値が不正で実行できない場合エラー画面を呼び出し
             forward(ForwardConst.FW_ERR_UNKNOWN);
         }
-
     }
+//    protected void invoke()
+//            throws ServletException, IOException {
+//
+//        Method commandMethod;
+//        try {
+//
+//            //パラメータからcommandを取得
+//            String command = request.getParameter(ForwardConst.CMD.getValue());
+//
+//            //ommandに該当するメソッドを実行する
+//            //(例: action=Employee command=show の場合 EmployeeActionクラスのshow()メソッドを実行する)
+//            commandMethod = this.getClass().getDeclaredMethod(command, new Class[0]);
+//            commandMethod.invoke(this, new Object[0]); //メソッドに渡す引数はなし
+//
+//        } catch (NoSuchMethodException | SecurityException | IllegalAccessException | IllegalArgumentException
+//                | InvocationTargetException | NullPointerException e) {
+//
+//            //発生した例外をコンソールに表示
+//            e.printStackTrace();
+//            //commandの値が不正で実行できない場合エラー画面を呼び出し
+//            forward(ForwardConst.FW_ERR_UNKNOWN);
+//        }
+//
+//    }
 
     /**
      * 指定されたjspの呼び出しを行う

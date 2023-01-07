@@ -75,4 +75,19 @@ public interface JpaConst {
     String Q_REP_COUNT_ALL_MINE = ENTITY_REP + ".countAllMine";
     String Q_REP_COUNT_ALL_MINE_DEF = "SELECT COUNT(r) FROM Report AS r WHERE r.employee = :" + JPQL_PARM_EMPLOYEE;
 
+    //出退勤テーブル
+    String TABLE_SFT = "shift"; //テーブル名
+    //出退勤テーブルカラム
+    String SFT_COL_ID = "id"; //id
+    String SFT_COL_EMP = "employee_id"; //日報を作成した従業員のid
+    String SFT_COL_BEGIN_ATTIME = "begin_attime"; //登録日時
+    String SFT_COL_FINISH_ATTIME = "finish_attime"; //更新日時
+
+    //shift1テーブル
+    String TABLE_SHI = "shift1"; //テーブル名
+    //shift1テーブルカラム
+    String SHI_COL_ID = "id"; //id
+    String SHI_COL_EMP = "employee_id"; //日報を作成した従業員のid
+    String SHI_COL_SHIFT1 = "inorout"; //出勤か退勤か
+    String SHI_COL_INPUT_AT = "inputAt"; //登録日時
 }
