@@ -3,17 +3,17 @@
 <%@ page import="constants.ForwardConst" %>
 
 <c:set var="action" value="${ForwardConst.ACT_SHI.getValue()}" />
-<c:set var="commIdx" value="${ForwardConst.CMD_INDEX.getValue()}" />
+<c:set var="commTop" value="${ForwardConst.CMD_TOP.getValue()}" />
 <c:set var="commCrt" value="${ForwardConst.CMD_CREATE.getValue()}" />
 
 <c:import url="/WEB-INF/views/layout/app.jsp">
     <c:param name="content">
-        <h2>シフト　新規登録ページ</h2>
+        <h2>出退勤新規登録ページ</h2>
 
         <form method="POST" action="<c:url value='?action=${action}&command=${commCrt}' />">
-            <c:import url="_form1.jsp" />
+            <c:import url="_shiftform.jsp" />
         </form>
 
-        <p><a href="<c:url value='?action=${action}&command=${commIdx}' />">一覧に戻る</a></p>
+        <p><a href="<c:url value='?action=${action}&command=${commTop}' />">Topに戻る</a></p>
     </c:param>
 </c:import>

@@ -11,7 +11,9 @@ public enum ForwardConst {
     ACT_TOP("Top"),
     ACT_EMP("Employee"),
     ACT_REP("Report"),
+    ACT_SHI("Shift"),
     ACT_AUTH("Auth"),
+
 
     //command
     CMD("command"),
@@ -26,6 +28,7 @@ public enum ForwardConst {
     CMD_EDIT("edit"),
     CMD_UPDATE("update"),
     CMD_DESTROY("destroy"),
+    CMD_TOP("top"),
 
     //jsp
     FW_ERR_UNKNOWN("error/unknown"),
@@ -40,7 +43,7 @@ public enum ForwardConst {
     FW_REP_NEW("reports/new"),
     FW_REP_EDIT("reports/edit"),
 
-    FW_SHI_NEW1("shift1/new1");
+    FW_SHI_NEW("shifts/new");//
 
     /**
      * 文字列

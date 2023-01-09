@@ -61,7 +61,7 @@ public class Shift {
     /**
      * 出勤／退勤
      */
-    @Column(name = JpaConst.SHI_COL_SHIFT1, length = 255, nullable = false)
+    @Column(name = JpaConst.SHI_COL_SHIFT, length = 255, nullable = false)
     private String inorout;
 
     /**

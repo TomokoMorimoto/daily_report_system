@@ -5,26 +5,32 @@
 
 <c:if test="${errors != null}">
     <div id="flush_error">
-        入力内容にエラーがあります。<br />
+        正しく入力してください<br />
         <c:forEach var="error" items="${errors}">
             ・<c:out value="${error}" /><br />
         </c:forEach>
 
     </div>
+
 </c:if>
-<fmt:parseDate value="${shift.shiftDateTime}" pattern="yyyy-MM-dd-" var="reportDay" type="date" />
-<label for="${AttributeConst.REP_DATE.getValue()}">日付</label><br />
-<input type="date" name="${AttributeConst.REP_DATE.getValue()}" id="${AttributeConst.REP_DATE.getValue()}" value="<fmt:formatDate value='${reportDay}' pattern='yyyy-MM-dd' />" />
+<fmt:parseDate value="${shift.InputAt}" pattern="yyyy-MM-dd（E）-HH:mm" var="shifttDay" type="date" />
+<label for="${AttributeConst.SHI_INPUT_AT.getValue()}">日時</label><br />
+<input type="datetime-local" name="${AttributeConst.SHI_INPUT_AT.getValue()}" id="${AttributeConst.SHI_INPUT_AT.getValue()}" value="<fmt:formatDate value='${shiftDay}' pattern='yyyy-MM-dd（E）-HH:mm' />" />
 <br /><br />
+
 
 <label>氏名</label><br />
 <c:out value="${sessionScope.login_employee.name}" />
 <br /><br />
 
-<label for="${AttributeConst.REP_TITLE.getValue()}">出退勤（選択してください）</label><br />
-<input type="text" name="${AttributeConst.REP_TITLE.getValue()}" id="${AttributeConst.REP_TITLE.getValue()}" value="${report.title}" />
+<label for="${AttributeConst.SHI_INOROUT.getValue()}">出退勤（選択してください）</label><br />
+<select name="${AttributeConst.SHI_INOROUT.getValue()}" id="${AttributeConstSHI_INOROUT.getValue()}">
+<option value="which">--- いずれかを選択してください ---</option>
+        <option value="出勤">出勤</option>
+        <option value="退勤">退勤</option>
+</select>
 <br /><br />
 
-<input type="hidden" name="${AttributeConst.REP_ID.getValue()}" value="${report.id}" />
+<input type="hidden" name="${AttributeConst.SHI_ID.getValue()}" value="${shift.id}" />
 <input type="hidden" name="${AttributeConst.TOKEN.getValue()}" value="${_token}" />
-<button type="submit">投稿</button>
+<button type="submit">登録</button>

@@ -48,7 +48,17 @@ public enum AttributeConst {
     REP_ID("id"),
     REP_DATE("report_date"),
     REP_TITLE("title"),
-    REP_CONTENT("content_msg");
+    REP_CONTENT("content_msg"),
+
+    //Shift管理
+    SHIFT("shift"),
+    SHIFTS("shifts"),
+    //REP_COUNT("reports_count"),
+    SHI_ID("id"),
+    SHI_INPUT_AT("shift_inputAt"),
+    SHI_INOROUT("inoeout");
+    //SHI_NEW("new");
+    //REP_CONTENT("content_msg"),
 
     private final String text;
     private final Integer i;
