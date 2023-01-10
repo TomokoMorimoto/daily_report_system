@@ -2,6 +2,7 @@ package actions;
 
 import java.io.IOException;
 import java.time.LocalDateTime;
+import java.util.List;
 
 import javax.servlet.ServletException;
 
@@ -33,34 +34,39 @@ public class ShiftAction extends ActionBase {
         service.close();
     }
 
-    //    /**
-    //     * 一覧画面を表示する
-    //     * @throws ServletException
-    //     * @throws IOException
-    //     */
-    //    public void index() throws ServletException, IOException {
-    //
-    //        //指定されたページ数の一覧画面に表示する日報データを取得
-    //        int page = getPage();
-    //        List<ReportView> reports = service.getAllPerPage(page);
-    //
-    //        //全日報データの件数を取得
-    //        long reportsCount = service.countAll();
-    //
-    //        putRequestScope(AttributeConst.REPORTS, reports); //取得した日報データ
-    //        putRequestScope(AttributeConst.REP_COUNT, reportsCount); //全ての日報データの件数
-    //        putRequestScope(AttributeConst.PAGE, page); //ページ数
-    //        putRequestScope(AttributeConst.MAX_ROW, JpaConst.ROW_PER_PAGE); //1ページに表示するレコードの数
-    //
-    //        //セッションにフラッシュメッセージが設定されている場合はリクエストスコープに移し替え、セッションからは削除する
-    //        String flush = getSessionScope(AttributeConst.FLUSH);
-    //        if (flush != null) {
-    //            putRequestScope(AttributeConst.FLUSH, flush);
-    //            removeSessionScope(AttributeConst.FLUSH);
-    //        }
-    //
-    //        //一覧画面を表示
-    //        forward(ForwardConst.FW_REP_INDEX);
+//    /**
+//     * 一覧画面を表示する
+//     * @throws ServletException
+//     * @throws IOException
+//     */
+//    public void index() throws ServletException, IOException {
+//
+//        //指定されたページ数の一覧画面に表示するShiftデータを取得
+//        int page = getPage();
+//        List<ShiftView> shifts = service.getAllPerPage(page);
+//
+//        //全日報データの件数を取得
+//        long reportsCount = service.countAll();
+//
+//        putRequestScope(AttributeConst.SHIFTS, shifts); //取得したshiftデータ
+//        putRequestScope(AttributeConst.SHI_COUNT, shiftsCount); //全ての日報データの件数
+//        putRequestScope(AttributeConst.PAGE, page); //ページ数
+//        putRequestScope(AttributeConst.MAX_ROW, JpaConst.ROW_PER_PAGE); //1ページに表示するレコードの数
+//
+//        //セッションにフラッシュメッセージが設定されている場合はリクエストスコープに移し替え、
+//        //セッションからは削除する
+//        String flush = getSessionScope(AttributeConst.FLUSH);
+//        if (flush != null) {
+//            putRequestScope(AttributeConst.FLUSH, flush);
+//            removeSessionScope(AttributeConst.FLUSH);
+//        }
+//
+//        //一覧画面を表示
+//        forward(ForwardConst.FW_SHI_INDEX);
+//    }
+//
+//    //↑ここまでが()index
+
     /**
      * 新規登録画面を表示する
      * @throws ServletException
@@ -73,7 +79,7 @@ public class ShiftAction extends ActionBase {
         //shift情報の空インスタンスに、shiftの日付＝今日の日付を設定する
         ShiftView shv = new ShiftView();
         shv.setInputAt(LocalDateTime.now());
-        putRequestScope(AttributeConst.REPORT, shv); //日付のみ設定済みのshiftインスタンス
+        putRequestScope(AttributeConst.SHIFT, shv); //日付のみ設定済みのshiftインスタンス
 
         //新規登録画面を表示
         forward(ForwardConst.FW_SHI_NEW);
@@ -106,11 +112,8 @@ public class ShiftAction extends ActionBase {
             ShiftView shv = new ShiftView(
                     null,
                     ev, //ログインしている従業員を、作成者として登録する
-                    datetime,
-                    getRequestParam(AttributeConst.SHI_INPUT_AT),
                     getRequestParam(AttributeConst.SHI_INOROUT),
-                    null,
-                    null);
+                    datetime);
 
             //Shift情報登録
             List<String> errors = service.create(shv);
@@ -129,10 +132,10 @@ public class ShiftAction extends ActionBase {
                 //登録中にエラーがなかった場合
 
                 //セッションに登録完了のフラッシュメッセージを設定
-                putSessionScope(AttributeConst.FLUSH, MessageConst.I_REGISTERED.getMessage());
+                putSessionScope(AttributeConst.FLUSH, MessageConst.I_INOROUT.getMessage());
 
                 //一覧画面にリダイレクト
-                redirect(ForwardConst.ACT_SHI, ForwardConst.CMD_TOP);
+                redirect(ForwardConst.ACT_REP, ForwardConst.CMD_INDEX);
 
             }
         }

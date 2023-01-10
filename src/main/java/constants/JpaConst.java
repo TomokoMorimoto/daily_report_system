@@ -40,9 +40,18 @@ public interface JpaConst {
     String REP_COL_CREATED_AT = "created_at"; //登録日時
     String REP_COL_UPDATED_AT = "updated_at"; //更新日時
 
+    //shiftテーブル
+    String TABLE_SHI = "shift"; //テーブル名
+    //shift1テーブルカラム
+    String SHI_COL_ID = "id"; //id
+    String SHI_COL_EMP = "employee_id"; //日報を作成した従業員のid
+    String SHI_COL_SHIFT = "inorout"; //出勤か退勤か
+    String SHI_COL_INPUT_AT = "inputAt"; //登録日時
+
     //Entity名
     String ENTITY_EMP = "employee"; //従業員
     String ENTITY_REP = "report"; //日報
+    String ENTITY_SHI = "shift"; //出退勤
 
     //JPQL内パラメータ
     String JPQL_PARM_CODE = "code"; //社員番号
@@ -75,6 +84,21 @@ public interface JpaConst {
     String Q_REP_COUNT_ALL_MINE = ENTITY_REP + ".countAllMine";
     String Q_REP_COUNT_ALL_MINE_DEF = "SELECT COUNT(r) FROM Report AS r WHERE r.employee = :" + JPQL_PARM_EMPLOYEE;
 
+    //Shift↓
+    //全ての日報をidの降順に取得する
+    String Q_SHI_GET_ALL = ENTITY_SHI + ".getAll";
+    String Q_SHI_GET_ALL_DEF = "SELECT s FROM Shift AS s ORDER BY s.id DESC";
+    //全ての日報の件数を取得する
+    String Q_SHI_COUNT = ENTITY_SHI + ".count";
+    String Q_SHI_COUNT_DEF = "SELECT COUNT(s) FROM Shift AS s";
+    //指定した従業員が作成したShiftを全件idの降順で取得する
+    String Q_SHI_GET_ALL_MINE = ENTITY_SHI+ ".getAllMine";
+    String Q_SHI_GET_ALL_MINE_DEF = "SELECT s FROM Shift AS s WHERE s.employee = :" + JPQL_PARM_EMPLOYEE + " ORDER BY s.id DESC";
+    //指定した従業員が作成したShiftの件数を取得する
+    String Q_SHI_COUNT_ALL_MINE = ENTITY_SHI + ".countAllMine";
+    String Q_SHI_COUNT_ALL_MINE_DEF = "SELECT COUNT(s) FROM Shift AS s WHERE s.employee = :" + JPQL_PARM_EMPLOYEE;
+
+
 //    //出退勤テーブル
 //    String TABLE_SFT = "shift"; //テーブル名
 //    //出退勤テーブルカラム
@@ -83,11 +107,4 @@ public interface JpaConst {
 //    String SFT_COL_BEGIN_ATTIME = "begin_attime"; //登録日時
 //    String SFT_COL_FINISH_ATTIME = "finish_attime"; //更新日時
 
-    //shiftテーブル
-    String TABLE_SHI = "shift"; //テーブル名
-    //shift1テーブルカラム
-    String SHI_COL_ID = "id"; //id
-    String SHI_COL_EMP = "employee_id"; //日報を作成した従業員のid
-    String SHI_COL_SHIFT = "inorout"; //出勤か退勤か
-    String SHI_COL_INPUT_AT = "inputAt"; //登録日時
 }

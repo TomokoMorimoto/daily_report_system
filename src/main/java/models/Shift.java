@@ -1,5 +1,4 @@
 package models;
-
 import java.time.LocalDateTime;
 
 import javax.persistence.Column;
@@ -9,6 +8,9 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import javax.persistence.NamedQueries;
+import javax.persistence.NamedQuery;
+import javax.persistence.Table;
 
 import constants.JpaConst;
 import lombok.AllArgsConstructor;
@@ -20,21 +22,21 @@ import lombok.Setter;
  * shiftデータのDTOモデル
  *
  */
-//@Table(name = JpaConst.TABLE_SHI)
-//@NamedQueries({
-//    @NamedQuery(
-//            name = JpaConst.Q_SHI_GET_ALL,
-//            query = JpaConst.Q_SHI_GET_ALL_DEF),
-//    @NamedQuery(
-//            name = JpaConst.Q_SHI_COUNT,
-//            query = JpaConst.Q_SHI_COUNT_DEF),
-//    @NamedQuery(
-//            name = JpaConst.Q_SHI_GET_ALL_MINE,
-//            query = JpaConst.Q_SHI_GET_ALL_MINE_DEF),
-//    @NamedQuery(
-//            name = JpaConst.Q_SHI_COUNT_ALL_MINE,
-//            query = JpaConst.Q_SHI_COUNT_ALL_MINE_DEF)
-//})
+@Table(name = JpaConst.TABLE_SHI)
+@NamedQueries({
+    @NamedQuery(
+            name = JpaConst.Q_SHI_GET_ALL,
+            query = JpaConst.Q_SHI_GET_ALL_DEF),
+    @NamedQuery(
+            name = JpaConst.Q_SHI_COUNT,
+            query = JpaConst.Q_SHI_COUNT_DEF),
+    @NamedQuery(
+            name = JpaConst.Q_SHI_GET_ALL_MINE,
+            query = JpaConst.Q_SHI_GET_ALL_MINE_DEF),
+    @NamedQuery(
+            name = JpaConst.Q_SHI_COUNT_ALL_MINE,
+            query = JpaConst.Q_SHI_COUNT_ALL_MINE_DEF)
+})
 
 @Getter //全てのクラスフィールドについてgetterを自動生成する(Lombok)
 @Setter //全てのクラスフィールドについてsetterを自動生成する(Lombok)

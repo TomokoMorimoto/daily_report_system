@@ -3,8 +3,9 @@
 <%@ page import="constants.ForwardConst" %>
 
 <c:set var="action" value="${ForwardConst.ACT_SHI.getValue()}" />
-<c:set var="commTop" value="${ForwardConst.CMD_TOP.getValue()}" />
+<c:set var="actionsec" value="${ForwardConst.ACT_TOP.getValue()}" />
 <c:set var="commCrt" value="${ForwardConst.CMD_CREATE.getValue()}" />
+<c:set var="commIdx" value="${ForwardConst.CMD_INDEX.getValue()}" />
 
 <c:import url="/WEB-INF/views/layout/app.jsp">
     <c:param name="content">
@@ -14,6 +15,6 @@
             <c:import url="_shiftform.jsp" />
         </form>
 
-        <p><a href="<c:url value='?action=${action}&command=${commTop}' />">Topに戻る</a></p>
+        <p><a href="<c:url value='?action=${actionsec}&command=${commIdx}' />">Topに戻る</a></p>
     </c:param>
 </c:import>

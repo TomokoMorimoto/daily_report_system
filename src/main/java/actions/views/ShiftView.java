@@ -33,7 +33,7 @@ public class ShiftView {
     private String inorout;
 
     /**
-     * 登録日時
+     * 出退勤日時
      */
     private LocalDateTime inputAt;
 

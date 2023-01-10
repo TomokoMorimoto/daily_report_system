@@ -13,9 +13,9 @@
     </div>
 
 </c:if>
-<fmt:parseDate value="${shift.InputAt}" pattern="yyyy-MM-dd（E）-HH:mm" var="shifttDay" type="date" />
+<fmt:parseDate value="${shift.inputAt}" pattern="yyyy-MM-dd" var="shifttDay" type="date" />
 <label for="${AttributeConst.SHI_INPUT_AT.getValue()}">日時</label><br />
-<input type="datetime-local" name="${AttributeConst.SHI_INPUT_AT.getValue()}" id="${AttributeConst.SHI_INPUT_AT.getValue()}" value="<fmt:formatDate value='${shiftDay}' pattern='yyyy-MM-dd（E）-HH:mm' />" />
+<input type="datetime-local" name="${AttributeConst.SHI_INPUT_AT.getValue()}" id="${AttributeConst.SHI_INPUT_AT.getValue()}" value="<fmt:formatDate value='${shiftDay}' pattern='yyyy-MM-dd' />" />
 <br /><br />
 
 
