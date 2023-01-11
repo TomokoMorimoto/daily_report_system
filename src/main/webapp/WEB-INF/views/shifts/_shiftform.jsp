@@ -6,13 +6,11 @@
 <c:if test="${errors != null}">
     <div id="flush_error">
         正しく入力してください<br />
-        <c:forEach var="error" items="${errors}">
-            ・<c:out value="${error}" /><br />
+        <c:forEach var="error" items="${errors}"><c:out value="${error}" /><br />
         </c:forEach>
-
     </div>
-
 </c:if>
+
 <fmt:parseDate value="${shift.inputAt}" pattern="yyyy-MM-dd'T'HH:mm" var="shiftDay" type="date" />
 <label for="${AttributeConst.SHI_INPUT_AT.getValue()}">日時</label><br />
 <input type="datetime-local" name="${AttributeConst.SHI_INPUT_AT.getValue()}" id="${AttributeConst.SHI_INPUT_AT.getValue()}" value="<fmt:formatDate value='${shiftDay}' pattern='yyyy-MM-dd HH:mm' />" />
@@ -24,7 +22,7 @@
 
 <label for="${AttributeConst.SHI_INOROUT.getValue()}">出退勤（選択してください）</label><br />
 <select name="${AttributeConst.SHI_INOROUT.getValue()}" id="${AttributeConstSHI_INOROUT.getValue()}">
-<option value="which">--- いずれかを選択してください ---</option>
+<option value="">--- いずれかを選択してください ---</option>
         <option value="出勤">出勤</option>
         <option value="退勤">退勤</option>
 </select>
