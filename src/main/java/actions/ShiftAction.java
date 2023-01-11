@@ -135,7 +135,7 @@ public class ShiftAction extends ActionBase {
                 putSessionScope(AttributeConst.FLUSH, MessageConst.I_INOROUT.getMessage());
 
                 //一覧画面にリダイレクト
-                redirect(ForwardConst.ACT_REP, ForwardConst.CMD_INDEX);
+                redirect(ForwardConst.ACT_TOP, ForwardConst.CMD_INDEX);
 
             }
         }

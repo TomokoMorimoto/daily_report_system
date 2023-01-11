@@ -13,11 +13,10 @@
     </div>
 
 </c:if>
-<fmt:parseDate value="${shift.inputAt}" pattern="yyyy-MM-dd" var="shifttDay" type="date" />
+<fmt:parseDate value="${shift.inputAt}" pattern="yyyy-MM-dd'T'HH:mm" var="shiftDay" type="date" />
 <label for="${AttributeConst.SHI_INPUT_AT.getValue()}">日時</label><br />
-<input type="datetime-local" name="${AttributeConst.SHI_INPUT_AT.getValue()}" id="${AttributeConst.SHI_INPUT_AT.getValue()}" value="<fmt:formatDate value='${shiftDay}' pattern='yyyy-MM-dd' />" />
+<input type="datetime-local" name="${AttributeConst.SHI_INPUT_AT.getValue()}" id="${AttributeConst.SHI_INPUT_AT.getValue()}" value="<fmt:formatDate value='${shiftDay}' pattern='yyyy-MM-dd HH:mm' />" />
 <br /><br />
-
 
 <label>氏名</label><br />
 <c:out value="${sessionScope.login_employee.name}" />
