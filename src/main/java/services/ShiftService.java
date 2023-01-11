@@ -1,6 +1,5 @@
 package services;
 
-import java.time.LocalDateTime;
 import java.util.List;
 
 import actions.views.EmployeeConverter;
@@ -86,11 +85,11 @@ public class ShiftService extends ServiceBase {
      * @return バリデーションで発生したエラーのリスト
      */
     public List<String> create(ShiftView shv) {
-        List<String> errors = ShiftValidator.validate(shv);
-        if (errors.size() == 0) {
-            LocalDateTime ldt = LocalDateTime.now();
-            shv.setInputAt(ldt);
-            createInternal(shv);
+        List<String> errors = ShiftValidator.validate(shv); //
+        if (errors.size() == 0) { //エラーのサイズ（数もしくは）が0だったら
+            //LocalDateTime ldt = LocalDateTime.now();//日時　＝　日時は今（今の日時）
+            //shv.setInputAt(ldt); //shvの、InputAtにセットします。Ldtを（LdtをSHVのIAにセットします）
+            createInternal(shv); //shvをInternalcreateします
         }
 
         //バリデーションで発生したエラーを返却（エラーがなければ0件の空リスト）

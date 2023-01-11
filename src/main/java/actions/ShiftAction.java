@@ -34,38 +34,38 @@ public class ShiftAction extends ActionBase {
         service.close();
     }
 
-//    /**
-//     * 一覧画面を表示する
-//     * @throws ServletException
-//     * @throws IOException
-//     */
-//    public void index() throws ServletException, IOException {
-//
-//        //指定されたページ数の一覧画面に表示するShiftデータを取得
-//        int page = getPage();
-//        List<ShiftView> shifts = service.getAllPerPage(page);
-//
-//        //全日報データの件数を取得
-//        long reportsCount = service.countAll();
-//
-//        putRequestScope(AttributeConst.SHIFTS, shifts); //取得したshiftデータ
-//        putRequestScope(AttributeConst.SHI_COUNT, shiftsCount); //全ての日報データの件数
-//        putRequestScope(AttributeConst.PAGE, page); //ページ数
-//        putRequestScope(AttributeConst.MAX_ROW, JpaConst.ROW_PER_PAGE); //1ページに表示するレコードの数
-//
-//        //セッションにフラッシュメッセージが設定されている場合はリクエストスコープに移し替え、
-//        //セッションからは削除する
-//        String flush = getSessionScope(AttributeConst.FLUSH);
-//        if (flush != null) {
-//            putRequestScope(AttributeConst.FLUSH, flush);
-//            removeSessionScope(AttributeConst.FLUSH);
-//        }
-//
-//        //一覧画面を表示
-//        forward(ForwardConst.FW_SHI_INDEX);
-//    }
-//
-//    //↑ここまでが()index
+    //    /**
+    //     * 一覧画面を表示する
+    //     * @throws ServletException
+    //     * @throws IOException
+    //     */
+    //    public void index() throws ServletException, IOException {
+    //
+    //        //指定されたページ数の一覧画面に表示するShiftデータを取得
+    //        int page = getPage();
+    //        List<ShiftView> shifts = service.getAllPerPage(page);
+    //
+    //        //全日報データの件数を取得
+    //        long reportsCount = service.countAll();
+    //
+    //        putRequestScope(AttributeConst.SHIFTS, shifts); //取得したshiftデータ
+    //        putRequestScope(AttributeConst.SHI_COUNT, shiftsCount); //全ての日報データの件数
+    //        putRequestScope(AttributeConst.PAGE, page); //ページ数
+    //        putRequestScope(AttributeConst.MAX_ROW, JpaConst.ROW_PER_PAGE); //1ページに表示するレコードの数
+    //
+    //        //セッションにフラッシュメッセージが設定されている場合はリクエストスコープに移し替え、
+    //        //セッションからは削除する
+    //        String flush = getSessionScope(AttributeConst.FLUSH);
+    //        if (flush != null) {
+    //            putRequestScope(AttributeConst.FLUSH, flush);
+    //            removeSessionScope(AttributeConst.FLUSH);
+    //        }
+    //
+    //        //一覧画面を表示
+    //        forward(ForwardConst.FW_SHI_INDEX);
+    //    }
+    //
+    //    //↑ここまでが()index
 
     /**
      * 新規登録画面を表示する
@@ -104,6 +104,7 @@ public class ShiftAction extends ActionBase {
             } else {
                 datetime = LocalDateTime.parse(getRequestParam(AttributeConst.SHI_INPUT_AT));
             }
+            //OK/System.out.println(getRequestParam(AttributeConst.SHI_INPUT_AT));
 
             //セッションからログイン中の従業員情報を取得
             EmployeeView ev = (EmployeeView) getSessionScope(AttributeConst.LOGIN_EMP);
@@ -114,6 +115,7 @@ public class ShiftAction extends ActionBase {
                     ev, //ログインしている従業員を、作成者として登録する
                     getRequestParam(AttributeConst.SHI_INOROUT),
                     datetime);
+           //OK/System.out.println(datetime);
 
             //Shift情報登録
             List<String> errors = service.create(shv);
